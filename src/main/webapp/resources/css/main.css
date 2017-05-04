@@ -1,0 +1,53 @@
+body{
+	background-image: url(../images/background.jpg);
+}
+/* цвет фона и рамки навигационного меню */
+.navbar-default {
+    border-color: #E7E7E7;
+    background-color: rgba(252, 228, 17, 0.9);
+}
+/* ÷вет пунктов навигационного меню */
+.navbar-default .navbar-nav > li > a {
+    color: black;
+}
+/* ÷вет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: gray;
+}
+/* ÷вет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #000000;
+    background-color: rgba(25, 140, 42, 0.7);
+    border-radius: 9px;
+}
+
+/* CSS стили дл€ мобильных устройств */
+/* ÷вет рамки у кнопки, котора€ открывает меню */
+.navbar-default .navbar-toggle {
+    border-color: #DDD;
+}
+/* ÷вет фона кнопки (котора€ открывает меню) при поднесении к ней курсора мышки или при нахождении еЄ в фокусе */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #DDD;
+}
+/* ÷вет полосочек в кнопочке, котора€ открывает меню */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+ 
+@media (max-width: 767px) {
+/* ÷вет пунктов меню в раскрывающихс€ списках */
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+/* ÷вет и фон пункта меню в раскрывающихс€ списках, при поднесении к нему курсора мышки или при нахождении его в фокусе */
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+        background-color: transparent;
+    }
+}

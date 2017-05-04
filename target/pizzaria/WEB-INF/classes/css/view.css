@@ -1,0 +1,175 @@
+.content h3 {
+    background: #23272a !important;
+    margin-bottom: 10px !important;
+    padding-left: 10px !important;
+}
+
+
+
+.product {
+    width: 270px;
+    margin-left: 68px;
+    float: left;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+.product {
+    margin-bottom: 30px;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+}
+
+.span3 {
+    width: 166px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+[class*="span"] {
+    float: left;
+    min-height: 1px;
+    margin-left: 20px;
+}
+
+.span3 {
+    width: 220px;
+}
+
+[class*="span"] {
+    float: left;
+    min-height: 1px;
+    margin-left: 19px;
+}
+
+div {
+    display: block;
+}
+
+div .row {
+    /*margin-left: -20px;*/
+    align-items: center;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+.container {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+
+.product figure {
+    position: relative;
+    width: 270px;
+    height: 186px;
+}
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    display: block;
+}
+
+.detail {
+    background: #f9f9f9;
+    text-align: center;
+    border: 1px solid #dfdfdf;
+    border-top: 0px;
+    padding: 10px 0px;
+    -webkit-transition: background-color 0.5s;
+    -moz-transition: background-color 0.5s;
+    -o-transition: background-color 0.5s;
+    -ms-transition: background-color 0.5s;
+}
+
+.product figure > a {
+    width: 270px;
+    height: 186px;
+}
+a:visited {
+    /* color: #551a8b; */
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.product figure > a > img {
+    /*width: 100%;*/
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+    width: auto\9;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+.product figure .overlay {
+    display: none;
+    padding: 20px 0px;
+    margin-left: -64px;
+    margin-top: -42px;
+    width: 128px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba(237,60,60,0.7);
+}
+
+.product figure .overlay a.zoom {
+    background: url("images/zoom.png") no-repeat;
+}
+.product figure .overlay a {
+    width: 41px;
+    height: 41px;
+    display: inline-block;
+    background-position: 0px 0px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.detail span {
+    /*font: 700 16px 'Arial' sans-serif;*/
+    /*color: darkblue;*/
+    margin-bottom: 5px;
+}
+
+.detail h4 {
+    margin-bottom: 5px;
+}
+
+h3 {
+    color: white;
+}
+
+.col-md-12 {
+    color: white;
+    background-color: black;
+}
+
+/*------------------*/
+body {
+    padding-top: 70px;
+    padding-bottom: 85px;
+}
+
+* {
+    border-radius: 0 !important;
+}

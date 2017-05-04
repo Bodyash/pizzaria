@@ -1,0 +1,121 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+header {
+    background-image: url(http://www.lunatik.com/media/catalog/category/Apple-Watch-Header_72_103015.jpg);
+    padding: 10px 40px;
+    padding-left: 80px;
+}
+
+header .navbar-header {
+    float: left;
+}
+
+header .navbar-header {
+    color: #f05f40;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+header .navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+header .container-fluid {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+header .navbar-default .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+}
+
+header h1 {
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0;
+}
+
+header a {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+
+footer .navbar {
+    background: black;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer .container-fluid a {
+
+}
+
+footer {
+    text-align: center;
+}
+
+.navbar {
+    /*margin-bottom: 50px;*/
+    border-radius: 0;
+}
+
+.jumbotron {
+    display: flex;
+    background-image: url("http://pre13.deviantart.net/3eda/th/pre/f/2007/036/4/b/texture_24_by_wanderingsoul_stox.jpg");
+    background-size: cover;
+    color: #ffffff;
+    height: 500px;
+    text-shadow: #000000;
+}
+
+.jumbotron h2 {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+}
+
+.jumbotron h3 {
+    margin: 0 0 20px;
+    color: #fff;
+}
+
+.col-md-6 {
+    margin: 0 0 30px;
+}
+
+/*.btn.btn-primary {*/
+/*border-radius: 2px;*/
+/*border: 0px;*/
+/*color: #fbd1d5;*/
+/*text-shadow: none;*/
+/*background-color: #ffffff;*/
+/*}*/
+
+.btn.btn-default:hover {
+    color: #ffffff;
+    background-color: darkgrey;
+}
+
+.btn-secondary {
+    background-color: #E8DFE0;
+    color: #ffffff;
+    margin: 0 0 30px;
+}
+
+.form-group label {
+    padding-top: 0.5em;
+    padding-left: 5.6em;
+}
