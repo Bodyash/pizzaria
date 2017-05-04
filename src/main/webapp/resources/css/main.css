@@ -4,16 +4,17 @@ body{
 /* цвет фона и рамки навигационного меню */
 .navbar-default {
     border-color: #E7E7E7;
-    background-color: rgba(252, 228, 17, 0.9);
+    background-color: rgb(206, 24, 24);
+    color: white;
 }
 /* ÷вет пунктов навигационного меню */
 .navbar-default .navbar-nav > li > a {
-    color: black;
+    color: white;
 }
 /* ÷вет пункта меню, при поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: gray;
+    color: lightgreen;
 }
 /* ÷вет и фон активного пункта меню, а также поднесении к нему курсора мышки или при его нахождении в фокусе */
 .navbar-default .navbar-nav > .active > a, 

@@ -31,13 +31,13 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	}
 	
 	@Bean(name = "orderDao")
-	public AccountDao OrderDao() {
+	public OrderDao OrderDao() {
 		return new OrderDaoImpl();
 	}
 	
 	@Bean(name = "pizzaDao")
-	public AccountDao PizzaDao() {
-		return new PizzaDaoImpl();
+	public ProductDao ProductDao() {
+		return new ProductDaoImpl();
 	}
 	
 	@Bean(name = "CustomAccountDetailService")

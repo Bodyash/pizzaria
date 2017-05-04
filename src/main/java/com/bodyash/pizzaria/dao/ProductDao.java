@@ -1,5 +1,5 @@
 package com.bodyash.pizzaria.dao;
 
-public interface PizzaDao {
+public interface ProductDao {
 
 }

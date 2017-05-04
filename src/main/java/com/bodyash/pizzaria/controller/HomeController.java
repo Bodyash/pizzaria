@@ -5,12 +5,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/")
 public class HomeController {
 
-	@RequestMapping
+	@RequestMapping(value = "/")
     public ModelAndView home() {
+		System.out.println("SENDING USER TO MAIN PAGE");
 		return new ModelAndView("home");
+    }
+	
+	@RequestMapping(value = "/drinks")
+    public ModelAndView drinks() {
+		return new ModelAndView("drinks");
     }
 
 }

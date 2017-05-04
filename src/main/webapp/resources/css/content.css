@@ -1,44 +1,36 @@
-@CHARSET "UTF-8";
+@import "compass/css3";
+
 .flex-container {
-    margin-left: 220px;
-    margin-right: 220px;
-    margin-bottom: 100px;
-    align-items: center;
-}
-
-.food_img{
-	width: 250px;
-    height: 250px;
-    margin: 25px;
-}
-
-.row--flex{
-  display: flex;
-  flex-wrap: wrap;
-}
-.block--dynamic {
-  display: inline-flex;
-  flex-direction: column;
-  flex-grow: 1;
-  float: left;
-  font-weight: bold;
-  background-color: #e4e4e4;
+  padding-bottom: 5em;
+  margin-left: 15em;
+  margin-right: 15em;
+  margin-bottom: 7em;
   list-style: none;
-  border: 2px solid #fff;
-  padding: 16px;
+  
+  background: rgba(25, 140, 42, 0.8);
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
 }
 
-$max-per-row: 4;
-$total-blocks: 12;
-
-@function limit($i) {
-  @if $i > $max-per-row { @return $max-per-row }
-  @else { @return $i }
+.flex-item {
+  background: white;
+  padding: 0px;
+  width: 350px;
+  height: 350px;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
 }
 
-@for $i from 1 through $total-blocks {
-  .block--dynamic:first-child:nth-last-child(#{$i}),
-  .block--dynamic:first-child:nth-last-child(#{$i}) ~ .block--dynamic {
-    width: 100% / limit($i);
-  }
+.btn {
+	margin-top: 5px;
 }

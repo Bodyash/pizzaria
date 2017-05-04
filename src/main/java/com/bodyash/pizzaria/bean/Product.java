@@ -8,14 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pizza")
-public class Pizza {
+@Table(name = "product")
+public class Product {
 /*
  * id
  * name
  * price
  * desc
  * img_url
+ * category
  */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +26,7 @@ public class Pizza {
     private String description;
     @Column(name = "img_url")
     private String imgUrl;
+    private Category category;
     
 	public int getId() {
 		return id;
@@ -55,5 +57,11 @@ public class Pizza {
 	}
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }

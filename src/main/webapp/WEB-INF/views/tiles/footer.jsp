@@ -4,9 +4,7 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-3">
-                <p>
                     GitHub: https://github.com/Bodyash <br>
-                </p>
             </div>
             <div class="col-md-2">
                 <p>
