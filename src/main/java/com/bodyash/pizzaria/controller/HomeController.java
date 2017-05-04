@@ -9,13 +9,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
     public ModelAndView home() {
-		System.out.println("SENDING USER TO MAIN PAGE");
 		return new ModelAndView("home");
     }
 	
 	@RequestMapping(value = "/drinks")
     public ModelAndView drinks() {
 		return new ModelAndView("drinks");
+    }
+	
+	@RequestMapping(value = "/desserts")
+    public ModelAndView desserts() {
+		return new ModelAndView("desserts");
     }
 
 }

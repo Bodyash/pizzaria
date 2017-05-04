@@ -24,10 +24,26 @@
 		<put-attribute name="title" value="Drinks" />
 		<put-attribute name="body" value="/WEB-INF/views/drinks.jsp" />
 	</definition>
-
-	<definition name="user/view" extends="base">
-		<put-attribute name="title" value="Profile" />
-		<put-attribute name="body" value="/WEB-INF/views/user/view.jsp" />
+	
+	<definition name="desserts" extends="base">
+		<put-attribute name="title" value="Desserts" />
+		<put-attribute name="body" value="/WEB-INF/views/desserts.jsp" />
 	</definition>
+	
+	<definition name="cart" extends="base">
+		<put-attribute name="title" value="Cart" />
+		<put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
+	</definition>
+
+	<definition name="account/login" extends="base">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/views/account/login.jsp" />
+	</definition>
+	
+		<definition name="account/registration" extends="base">
+		<put-attribute name="title" value="SignUp" />
+		<put-attribute name="body" value="/WEB-INF/views/account/registration.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

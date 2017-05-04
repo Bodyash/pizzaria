@@ -1,19 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <body>
 <ul class="flex-container">
   <li class="flex-item">
   	<article class="block__content">
   		<header>
-			<h3>DRINK IT</h3>
+			<h3>DELICIOUS DESSERT</h3>
 		</header>
 		<section class="description">
-			<p>AND GAIN POWER OVER9000!
+			<p>Buy This and win NullPointerException!
 		</section>
 		<section class="food_img">
-			<img alt="" src="https://cdn.ofix.com/Images/SiteImages/ProductOriginalImage/Coca-Cola-Kutu-330-Ml-24-Lu_RI23119FT1MF114491.jpg" height="220px" width="220px">
+			<img alt="" src="https://img2.10bestmedia.com/Images/Photos/306138/p-img-BCreampie_54_990x660.jpg" height="220px" width="220px">
 		</section>
 		<footer>
 			<a class="btn btn-primary">Add to Cart</a>

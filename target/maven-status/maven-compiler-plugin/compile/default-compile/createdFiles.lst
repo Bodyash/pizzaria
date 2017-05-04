@@ -1,5 +1,6 @@
 com\bodyash\pizzaria\service\AccountService.class
 com\bodyash\pizzaria\SecurityConfig.class
+com\bodyash\pizzaria\controller\CartController.class
 com\bodyash\pizzaria\bean\Category.class
 com\bodyash\pizzaria\bean\Product.class
 com\bodyash\pizzaria\service\CustomAccountDetailService.class

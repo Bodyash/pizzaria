@@ -78,7 +78,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         configurer.setDefinitions("/WEB-INF/tiles/tiles.xml");
         configurer.setCheckRefresh(true); //added
         return configurer;
-
     }
 
     @Override

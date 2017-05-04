@@ -15,13 +15,13 @@ import com.bodyash.pizzaria.bean.UserAccount;
 import com.bodyash.pizzaria.service.AccountService;
 
 @Controller
-@RequestMapping(value = "/account")
+@RequestMapping(value = "/signup")
 public class AccountController {
 
     @Autowired
     AccountService AccountService;
     
-    @RequestMapping(value = "/signup")
+    @RequestMapping(method = RequestMethod.GET)
     public ModelAndView createForm() {
     	ModelAndView mav = new ModelAndView("account/registration");
     	mav.addObject("user", new UserAccount());
@@ -33,13 +33,13 @@ public class AccountController {
     public String saveUser(@ModelAttribute("user") UserAccount userAccount, BindingResult result) {
     	System.out.println("LOADING...");
         if (result.hasErrors()) {
-            return "user/registration";
+            return "account/registration";
         }
-        AccountService.saveCustomer(userAccount);
-        return "redirect:/user/" + userAccount.getName();
+        AccountService.saveCustomer(userAccount); /////////CHANGE METHODS!!111
+        return "redirect:/account/" + userAccount.getName(); //CHANGE LINKS!1111
     }
    
-    @RequestMapping(value = "/{userId}")
+    @RequestMapping(value = "account/{userId}")
     public String getUserProfile(@PathVariable String userId, Map<String, Object> model) {
         UserAccount userAccount = AccountService.findByUsername(userId);
         model.put("user", userAccount);

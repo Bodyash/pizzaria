@@ -1,60 +1,20 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
-    	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    	<jsp:include page="/WEB-INF/views/include/head-include.jsp"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-              type="text/css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-                integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-                crossorigin="anonymous"></script>
-
-        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/login.css"/>"/>
-        
-    <title>Sign Up</title>
+<title>Signup</title>
+<link href="/resources/css/signup.css" rel="stylesheet">
+<script type="text/javascript" src="/resources/js/registration.js"></script>
 </head>
-
 <body>
-
-<h1>Please register and apply for a Tesla Model S Test Drive at Our Car Dealership! We will call you back after registration as soon as possible</h1>
-
-<body background=https://www.tesla.com/tesla_theme/assets/img/modelx/section-hero-background.jpg?20161201>
-
-<div class="wrapper">
- <c:url var="userUrl" value="/user"/>
-<form:form class="form-signin" name="input" method="post" action="${userUrl}" modelAttribute="user">
-    <h2 class="form-signin-heading">Sign Up</h2>
-    <div>
-        <label>Username: </label>
-        <form:input class="form-control" type="text" path="username"/>
-        <form:errors path="username" cssClass="error"/>
-    </div>
-    <div>
-        <label>Password: </label>
-        <form:input class="form-control" type="text" path="password"/>
-        <form:errors path="password" cssClass="error"/>
-    </div>
- 
-    <div>
-        <label>First name: </label>
-        <form:input class="form-control" type="text" path="firstName"/>
-        <form:errors path="firstName" cssClass="error"/>
-    </div>
-    <div>
-        <label>Last name: </label>
-        <form:input class="form-control" type="text" path="lastName"/>
-        <form:errors path="lastName" cssClass="error"/>
-    </div>
-    <div style="margin: 20px 10px 0 10px ">
-        <input class="btn btn-primary btn-lg" type="submit" value="Submit">
-        <a href="/" class="btn btn-danger btn-lg" style="float: right">Cancel</a>
-    </div>
-</form:form>
-</div>
-
+	<div class="container">
+		<form class="signUp" id="myForm" method="POST" action="...">
+			<h1 class="signUpTitle">Sign up in seconds</h1>
+			<input id="field_username" placeholder="Type your username" autofocus class="signUpInput" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username">
+			<input id="field_pwd1" placeholder="Choose a password" class="signUpInput" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1">
+			<input id="field_pwd2" placeholder="Repeat a password" class="signUpInput" title="Please enter the same Password as above." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2">
+			<p><input type="submit" class="signUpButton" value="Submit"></p>
+		</form>
+	</div>
+	<!-- Looking for source of this page? Contact me: vk.com/id20444094 or 0637129869 -->
 </body>
 </html>
