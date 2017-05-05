@@ -8,7 +8,8 @@
 <c:set var="contextPath" value="${req.contextPath}"/>
 
 <meta name="viewport" content="width = device-width, initial-scale = 1"/>
-
+<link rel="icon" type="image/ico"
+	href="/resources/images/pizza_favicon.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
       type="text/css">
 <link href="https://gist.githubusercontent.com/nodesocket/5843712/raw/10f5747937c8502c896f5f21bf64d2a5a69bb798/bootstrap.flatten.css"
