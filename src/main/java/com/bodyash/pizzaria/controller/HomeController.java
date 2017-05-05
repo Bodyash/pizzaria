@@ -21,5 +21,17 @@ public class HomeController {
     public ModelAndView desserts() {
 		return new ModelAndView("desserts");
     }
+	
+	@RequestMapping(value = "/contacts")
+    public ModelAndView contacts() {
+		return new ModelAndView("info/contacts");
+    }
+	
+	@RequestMapping(value = "/about")
+    public ModelAndView about() {
+		return new ModelAndView("info/about");
+    }
+	
+	
 
 }

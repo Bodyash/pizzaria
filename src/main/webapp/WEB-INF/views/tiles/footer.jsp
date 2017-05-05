@@ -19,8 +19,8 @@
             <div class="col-md-3">
 
                 <ul class="nav navbar-nav" style="float: left">
-                    <li><a href="#">Guarantee</a></li>
-                    <li><a href="#">Contacts</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
                 </ul>
             </div>
         </div>

@@ -40,9 +40,19 @@
 		<put-attribute name="body" value="/WEB-INF/views/account/login.jsp" />
 	</definition>
 	
-		<definition name="account/registration" extends="base">
+	<definition name="account/registration" extends="base">
 		<put-attribute name="title" value="SignUp" />
 		<put-attribute name="body" value="/WEB-INF/views/account/registration.jsp" />
+	</definition>
+	
+	<definition name="info/contacts" extends="base">
+		<put-attribute name="title" value="Contacts" />
+		<put-attribute name="body" value="/WEB-INF/views/info/contacts.jsp" />
+	</definition>
+
+	<definition name="info/about" extends="base">
+		<put-attribute name="title" value="About" />
+		<put-attribute name="body" value="/WEB-INF/views/info/about.jsp" />
 	</definition>
 	
 
