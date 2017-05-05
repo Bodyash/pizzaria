@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
-<title>Signup</title>
 <link href="/resources/css/signup.css" rel="stylesheet">
 <script type="text/javascript" src="/resources/js/registration.js"></script>
 </head>
@@ -15,6 +14,6 @@
 			<p><input type="submit" class="signUpButton" value="Submit"></p>
 		</form>
 	</div>
-	<!-- Looking for source of this page? Contact me: vk.com/id20444094 or 0637129869 -->
+	<!-- Looking for source of this page? Contact me: vk.com/id20444094 or +380637129869 -->
 </body>
 </html>
