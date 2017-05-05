@@ -1,4 +1,7 @@
 <html>
+<head>
+<link href="/resources/css/content.css" rel="stylesheet">
+</head>
 <body>
 <ul class="flex-container">
   <li class="flex-item">

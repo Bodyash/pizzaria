@@ -15,8 +15,7 @@
 <link href="https://gist.githubusercontent.com/nodesocket/5843712/raw/10f5747937c8502c896f5f21bf64d2a5a69bb798/bootstrap.flatten.css"
                             type="text/css" rel="stylesheet"/>
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/content.css" />" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
