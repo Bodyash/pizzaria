@@ -20,7 +20,7 @@ import com.bodyash.pizzaria.dao.*;
 import com.bodyash.pizzaria.service.AccountService;
 import com.bodyash.pizzaria.service.CustomAccountDetailService;
 
-@Configuration
+@Configuration()
 @ComponentScan("com.bodyash.pizzaria")
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
