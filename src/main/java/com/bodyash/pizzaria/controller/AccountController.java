@@ -46,7 +46,7 @@ public class AccountController {
     		return "account/registration";
     	}
         
-        return "redirect:/account/cabinet"; //CHANGE LINKS!1111
+        return "redirect:/account/cabinet";
     }
    
     @RequestMapping(value = "account/{userId}")

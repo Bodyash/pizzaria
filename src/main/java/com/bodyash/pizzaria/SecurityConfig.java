@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/adminpanel").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/db").access("hasRole('ROLE_DBA')")
                 .antMatchers("/cabinet").access("hasRole('ROLE_USER')")
                 .and().formLogin().loginPage("/login").failureUrl("/login?error")
                 .usernameParameter("name").passwordParameter("pass_hash")
