@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.bodyash.pizzaria.dao.*;
 import com.bodyash.pizzaria.service.AccountService;
+import com.bodyash.pizzaria.service.AccountServiceImpl;
 import com.bodyash.pizzaria.service.CustomAccountDetailService;
 
 @Configuration()
@@ -46,7 +48,12 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	}
 	@Bean(name = "AccountService")
 	public AccountService AccountService() {
-		return new AccountService();
+		return new AccountServiceImpl();
+	}
+	
+	@Bean(name = "BCryptPasswordEncoder")
+	public BCryptPasswordEncoder BCryptPasswordEncoder(){
+		return new BCryptPasswordEncoder();
 	}
 	
     @Bean

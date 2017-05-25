@@ -2,16 +2,12 @@ package com.bodyash.pizzaria.service;
 
 import com.bodyash.pizzaria.bean.UserAccount;
 
-public class AccountService {
+public interface AccountService {
+	 
+    UserAccount findById(int id);
+     
+    UserAccount findBySso(String sso);
 
-	public void saveCustomer(UserAccount userAccount) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public UserAccount findByUsername(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	void saveUser(UserAccount user);
+     
 }

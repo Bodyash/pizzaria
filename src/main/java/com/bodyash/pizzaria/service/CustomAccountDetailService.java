@@ -12,25 +12,30 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bodyash.pizzaria.bean.UserAccount;
+import com.bodyash.pizzaria.bean.UserAccountRole;
 
 
 public class CustomAccountDetailService implements UserDetailsService{
-    @Autowired
+   
+	@Autowired
     private AccountService accountService;
 
     @Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserAccount account = accountService.findByUsername(username);
+		UserAccount account = accountService.findBySso(username);
         if (account == null) {
             throw new UsernameNotFoundException("Username not FOUND!!!");
         }
-        return new org.springframework.security.core.userdetails.User(account.getName(), account.getPass_hash(), true, true, true, true, getGrantedAuthorities(account));
+        return new org.springframework.security.core.userdetails.User(account.getSsoId(), account.getPassword(), true, true, true, true, getGrantedAuthorities(account));
 	}
 
-    private List<GrantedAuthority> getGrantedAuthorities(UserAccount user) {
+    private List<GrantedAuthority> getGrantedAuthorities(UserAccount user){
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
-        System.out.print("authorities :" + authorities);
+         
+        for(UserAccountRole userAccountRole : user.getUserRoles()){
+            authorities.add(new SimpleGrantedAuthority("ROLE_"+userAccountRole.getType()));
+        }
+        System.out.print("authorities :"+authorities);
         return authorities;
     }
 

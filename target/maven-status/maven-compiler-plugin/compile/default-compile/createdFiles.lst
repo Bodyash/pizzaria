@@ -1,8 +1,10 @@
+com\bodyash\pizzaria\service\AccountServiceImpl.class
 com\bodyash\pizzaria\service\AccountService.class
 com\bodyash\pizzaria\SecurityConfig.class
 com\bodyash\pizzaria\controller\CartController.class
 com\bodyash\pizzaria\bean\Category.class
 com\bodyash\pizzaria\bean\Product.class
+com\bodyash\pizzaria\dao\AbstractDao.class
 com\bodyash\pizzaria\service\CustomAccountDetailService.class
 com\bodyash\pizzaria\bean\State.class
 com\bodyash\pizzaria\dao\ProductDao.class
@@ -20,4 +22,5 @@ com\bodyash\pizzaria\WebInitializer.class
 com\bodyash\pizzaria\controller\HomeController.class
 com\bodyash\pizzaria\HibernateConfiguration.class
 com\bodyash\pizzaria\bean\Order.class
+com\bodyash\pizzaria\bean\UserAccountRoleType.class
 com\bodyash\pizzaria\bean\UserAccountRole.class

@@ -1,5 +1,9 @@
 package com.bodyash.pizzaria.dao;
 
-public interface AccountDao {
+import com.bodyash.pizzaria.bean.UserAccount;
 
+public interface AccountDao {
+    UserAccount findById(int id);
+    
+    UserAccount findBySSO(String sso);
 }

@@ -1,64 +1,79 @@
 package com.bodyash.pizzaria.bean;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "account")
+@Table(name="account")
 public class UserAccount {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+ 
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String pass_hash;
-    private String role = UserAccountRole.USER.getUserAccountRole();
-
+ 
+    @Column(name="SSO_ID", unique=true, nullable=false)
+    private String ssoId;
+     
+    @Column(name="PASSWORD", nullable=false)
+    private String password;
+         
+ 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "account_account_role", 
+             joinColumns = { @javax.persistence.JoinColumn(name = "account_ID") }, 
+             inverseJoinColumns = { @javax.persistence.JoinColumn(name = "account_role_ID") })
+    private Set<UserAccountRole> userRoles = new HashSet<UserAccountRole>();
+ 
     public int getId() {
         return id;
     }
-
+ 
     public void setId(int id) {
         this.id = id;
     }
-
-    public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getRole() {
-        return role;
+ 
+    public String getSsoId() {
+        return ssoId;
     }
-
-    public void setRole(String role) {
-        this.role = role;
+ 
+    public void setSsoId(String ssoId) {
+        this.ssoId = ssoId;
     }
-    
-	public String getPass_hash() {
-		return pass_hash;
-	}
-
-	public void setPass_hash(String pass_hash) {
-		this.pass_hash = pass_hash;
-	}
-
-
+ 
+    public String getPassword() {
+        return password;
+    }
+ 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+ 
+    public Set<UserAccountRole> getUserRoles() {
+        return userRoles;
+    }
+ 
+    public void setUserProfiles(Set<UserAccountRole> userRoles) {
+        this.userRoles = userRoles;
+    }
+ 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + id;
-        result = prime * result + ((role == null) ? 0 : role.hashCode());
+        result = prime * result + ((ssoId == null) ? 0 : ssoId.hashCode());
         return result;
     }
-
+ 
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -70,18 +85,19 @@ public class UserAccount {
         UserAccount other = (UserAccount) obj;
         if (id != other.id)
             return false;
-        if (role == null) {
-            if (other.role != null)
+        if (ssoId == null) {
+            if (other.ssoId != null)
                 return false;
-        } else if (!role.equals(other.role))
+        } else if (!ssoId.equals(other.ssoId))
             return false;
         return true;
     }
-
+ 
     @Override
     public String toString() {
-        return "UserProfile [id=" + id + ",  role=" + role + "]";
+        return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password
+                + ", userRoles=" + userRoles +"]";
     }
-
-
+ 
+     
 }

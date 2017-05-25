@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="container">
-		<form class="signUp" id="myForm" method="POST" action="...">
+		<form class="signUp" id="myForm" method="POST" action="signup">
 			<h1 class="signUpTitle">Sign up in seconds</h1>
 			<input id="field_username" placeholder="Type your username" autofocus class="signUpInput" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username">
 			<input id="field_pwd1" placeholder="Choose a password" class="signUpInput" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1">
