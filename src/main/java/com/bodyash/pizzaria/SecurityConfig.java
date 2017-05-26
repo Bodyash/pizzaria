@@ -21,17 +21,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
-
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/adminpanel").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/db").access("hasRole('ROLE_DBA')")
-                .antMatchers("/cabinet").access("hasRole('ROLE_USER')")
-                .and().formLogin().loginPage("/login").failureUrl("/login?error")
-                .usernameParameter("name").passwordParameter("pass_hash")
-                .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/403");
+      http.authorizeRequests()
+        .antMatchers("/", "/cart", "/drinks", "/desserts").permitAll()
+        .antMatchers("/adminpanel").access("hasRole('ADMIN')")
+        .antMatchers("/db").access("hasRole('ADMIN') and hasRole('DBA')")
+        .and().formLogin().loginPage("/login").failureUrl("/login?error")
+        .usernameParameter("ssoId").passwordParameter("password")
+        .and().csrf()
+        .and().exceptionHandling().accessDeniedPage("/403");
     }
 
 }
