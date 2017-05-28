@@ -24,6 +24,7 @@ public class CustomAccountDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserAccount account = accountService.findBySso(username);
         if (account == null) {
+        	System.out.println("Username not found!");
             throw new UsernameNotFoundException("Username not FOUND!!!");
         }
         return new org.springframework.security.core.userdetails.User(account.getSsoId(), account.getPassword(), true, true, true, true, getGrantedAuthorities(account));

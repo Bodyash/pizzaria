@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
@@ -19,12 +19,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({ "com.bodyash.pizzaria" })
 //@PropertySource(value = {"classpath:META-INF/application.properties"}) (if using properties file)
 public class HibernateConfiguration {
+	
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan("com.bodyash.pizzaria");
+		sessionFactory.setPackagesToScan("com.bodyash.pizzaria.bean");//i change this
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}

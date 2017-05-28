@@ -6,4 +6,6 @@ public interface AccountDao {
     UserAccount findById(int id);
     
     UserAccount findBySSO(String sso);
+
+	void save(UserAccount user);
 }

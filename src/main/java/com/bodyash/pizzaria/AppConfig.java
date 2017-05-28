@@ -21,6 +21,7 @@ import com.bodyash.pizzaria.dao.*;
 import com.bodyash.pizzaria.service.AccountService;
 import com.bodyash.pizzaria.service.AccountServiceImpl;
 import com.bodyash.pizzaria.service.CustomAccountDetailService;
+import com.bodyash.pizzaria.service.UserAccountRoleServiceImpl;
 
 @Configuration()
 @ComponentScan("com.bodyash.pizzaria")
@@ -55,6 +56,22 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public BCryptPasswordEncoder BCryptPasswordEncoder(){
 		return new BCryptPasswordEncoder();
 	}
+	
+	@Bean(name = "UserAccountRoleDao")
+	public UserAccountRoleDao UserAccountRoleDao(){
+		return new UserAccountRoleDaoIml();
+	}
+	
+	@Bean(name = "UserAccountRoleService")
+	public com.bodyash.pizzaria.service.UserAccountRoleService UserAccountRoleService(){
+		return new UserAccountRoleServiceImpl();
+	}
+	
+	@Bean(name = "RoleToUserAccountRoleTypeConverter")
+	public RoleToUserAccountRoleTypeConverter RoleToUserAccountRoleTypeConverter(){
+		return new RoleToUserAccountRoleTypeConverter();
+	}
+	
 	
     @Bean
     public UrlBasedViewResolver setupViewResolver() {

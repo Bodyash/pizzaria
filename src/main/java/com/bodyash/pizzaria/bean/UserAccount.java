@@ -3,6 +3,7 @@ package com.bodyash.pizzaria.bean;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="account")
@@ -26,8 +30,8 @@ public class UserAccount {
     @Column(name="PASSWORD", nullable=false)
     private String password;
          
- 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
+    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
     @JoinTable(name = "account_account_role", 
              joinColumns = { @javax.persistence.JoinColumn(name = "account_ID") }, 
              inverseJoinColumns = { @javax.persistence.JoinColumn(name = "account_role_ID") })

@@ -51,13 +51,11 @@
     }
 
     if(supports_input_validity()) {
-      var usernameInput = document.getElementById("field_username");
+      var usernameInput = document.getElementById("ssoId");
       usernameInput.setCustomValidity(usernameInput.title);
 
-      var pwd1Input = document.getElementById("field_pwd1");
+      var pwd1Input = document.getElementById("password");
       pwd1Input.setCustomValidity(pwd1Input.title);
-
-      var pwd2Input = document.getElementById("field_pwd2");
 
       // input key handlers
 
@@ -74,10 +72,6 @@
           pwd2Input.pattern = this.pattern;
           pwd2Input.setCustomValidity("");
         }
-      }, false);
-
-      pwd2Input.addEventListener("keyup", function() {
-        this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
       }, false);
 
     }

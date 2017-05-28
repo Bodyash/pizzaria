@@ -1,10 +1,17 @@
 package com.bodyash.pizzaria.controller;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,41 +19,53 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bodyash.pizzaria.bean.UserAccount;
+import com.bodyash.pizzaria.bean.UserAccountRole;
 import com.bodyash.pizzaria.service.AccountService;
+import com.bodyash.pizzaria.service.UserAccountRoleService;
 
 @Controller
-@RequestMapping(value = "/signup")
 public class AccountController {
-
+	
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    UserAccountRoleService userAccountRoleService;
+
     @Autowired
     AccountService AccountService;
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView createForm() {
     	ModelAndView mav = new ModelAndView("account/registration");
-    	mav.addObject("user", new UserAccount());
+    	UserAccount user = new UserAccount();
+    	mav.addObject("user", user);
         return mav;
     }
 
     //registration
-    @RequestMapping(method = RequestMethod.POST)
-    public String saveUser(@RequestParam(value="field_username", required=true) String username, 
-            @RequestParam(value="field_pwd1", required=false) String pwd1, 
-            @RequestParam(value="field_pwd2", required=false) String pwd2) {
-    	System.out.println("LOADING...");
-    	UserAccount user = new UserAccount();
-    	user.setSsoId(username.toLowerCase());
-    	user.setPassword(bCryptPasswordEncoder.encode(pwd1));
-    	if(AccountService.findBySso(user.getSsoId()) == null){
-    		System.out.println("pass = " + pwd1 + " pass_hash = " + user.getPassword());
-    		AccountService.saveUser(user); 
-    	}else{
-    		return "account/registration";
-    	}
-        
-        return "redirect:/account/cabinet";
+    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    public String saveUser(@Valid UserAccount user,
+            BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            System.out.println("There are errors");
+            return "account/registration?error";
+        }
+        System.out.println("SSO ID : "+user.getSsoId());
+        System.out.println("Password : "+user.getPassword());
+        System.out.println("Checking UsrProfiles....");
+        if(user.getUserRoles()!=null){
+
+            HashSet<UserAccountRole> userRoles = new HashSet<>();
+          	UserAccountRole uar = new UserAccountRole();
+          	uar.setType("USER");
+          	userRoles.add(uar);
+          	user.setUserProfiles(userRoles);
+              for(UserAccountRole role : user.getUserRoles()){
+                  System.out.println("Profile : "+ role.getType());
+              }
+            AccountService.saveUser(user);
+  
+        }
+        model.addAttribute("success", "User " + user.getSsoId() + " has been registered successfully");
+        return "registrationsuccess";
     }
    
     @RequestMapping(value = "account/{userId}")
@@ -60,6 +79,11 @@ public class AccountController {
 		}
 	    return "home";
        
+    }
+    
+    @ModelAttribute("roles")
+    public List<UserAccountRole> initializeProfiles() {
+        return userAccountRoleService.findAll();
     }
 
 
