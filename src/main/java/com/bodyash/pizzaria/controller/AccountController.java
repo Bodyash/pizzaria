@@ -52,10 +52,8 @@ public class AccountController {
         System.out.println("Password : "+user.getPassword());
         System.out.println("Checking UsrProfiles....");
         if(user.getUserRoles()!=null){
-
             HashSet<UserAccountRole> userRoles = new HashSet<>();
-          	UserAccountRole uar = new UserAccountRole();
-          	uar.setType("USER");
+          	UserAccountRole uar = userAccountRoleService.findByType("USER");
           	userRoles.add(uar);
           	user.setUserProfiles(userRoles);
               for(UserAccountRole role : user.getUserRoles()){
