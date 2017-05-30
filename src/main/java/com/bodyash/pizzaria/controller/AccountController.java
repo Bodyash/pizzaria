@@ -51,17 +51,17 @@ public class AccountController {
         System.out.println("SSO ID : "+user.getSsoId());
         System.out.println("Password : "+user.getPassword());
         System.out.println("Checking UsrProfiles....");
-        if(user.getUserRoles()!=null){
-            HashSet<UserAccountRole> userRoles = new HashSet<>();
-          	UserAccountRole uar = userAccountRoleService.findByType("USER");
-          	userRoles.add(uar);
-          	user.setUserProfiles(userRoles);
-              for(UserAccountRole role : user.getUserRoles()){
-                  System.out.println("Profile : "+ role.getType());
-              }
-            AccountService.saveUser(user);
-  
+        //Set a new USER ROLE from DB
+        HashSet<UserAccountRole> userRoles = new HashSet<>();
+        UserAccountRole uar = userAccountRoleService.findByType("USER");
+        userRoles.add(uar);
+        user.setUserProfiles(userRoles);
+        for(UserAccountRole role : user.getUserRoles()){
+        	System.out.println("Profile : "+ role.getType());
         }
+        //SAVE USER
+        AccountService.saveUser(user);
+
         model.addAttribute("success", "User " + user.getSsoId() + " has been registered successfully");
         return "registrationsuccess";
     }

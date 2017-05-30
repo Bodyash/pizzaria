@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
 
     // JavaScript form validation
 
@@ -57,6 +57,8 @@
       var pwd1Input = document.getElementById("password");
       pwd1Input.setCustomValidity(pwd1Input.title);
 
+      var pwd2Input = document.getElementById("field_pwd2");
+
       // input key handlers
 
       usernameInput.addEventListener("keyup", function() {
@@ -72,6 +74,10 @@
           pwd2Input.pattern = this.pattern;
           pwd2Input.setCustomValidity("");
         }
+      }, false);
+
+      pwd2Input.addEventListener("keyup", function() {
+        this.setCustomValidity(this.validity.patternMismatch ? pwd2Input.title : "");
       }, false);
 
     }
