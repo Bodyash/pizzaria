@@ -31,7 +31,7 @@ public class UserAccount {
     private String password;
          
     @Fetch(FetchMode.SELECT)
-    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "account_account_role", 
              joinColumns = { @javax.persistence.JoinColumn(name = "account_ID") }, 
              inverseJoinColumns = { @javax.persistence.JoinColumn(name = "account_role_ID") })
