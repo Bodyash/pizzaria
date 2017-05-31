@@ -20,6 +20,11 @@
 					<p>You have been logged out successfully.</p>
 				</div>
 			</c:if>
+			<c:if test="${success != null}">
+				<div class="alert alert-success">
+					<p>${success}</p>
+				</div>
+			</c:if>
 			<input type="text" class="signUpInput" id="username" name="ssoId"
 				placeholder="Enter Username" autofocus required> <input
 				type="password" class="signUpInput" id="password" name="password"

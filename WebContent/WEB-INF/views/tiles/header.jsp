@@ -18,8 +18,33 @@
         <li><a href="/desserts">Desserts</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+              <sec:authorize access="hasRole('ADMIN')">
+                <li>
+                    <a href="<c:url value="/adminpanel"/>"> Admin Panel</a>
+				</li>
+				<li>
+				    <a href="<c:url value="/orderpanel"/>"> Order Panel</a>
+                </li>
+        </sec:authorize>
       	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-user"></span> Login</a></li>
+
+            <sec:authorize access="!isAuthenticated()">
+                <li>
+                    <a href="<c:url value="/login"/>" role="button">Login</a>
+                </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <li>
+                    <a href="/cabinet" role="button">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        &nbsp;
+                        <sec:authentication property="principal.username"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="<c:url value="/logout"/>" role="button">Logout</a>
+                </li>
+            </sec:authorize>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

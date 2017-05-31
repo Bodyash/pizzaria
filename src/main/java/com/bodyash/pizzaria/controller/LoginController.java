@@ -38,10 +38,10 @@ public class LoginController {
         return "account/adminpanel";
     }
  
-    @RequestMapping(value = "/db", method = RequestMethod.GET)
+    @RequestMapping(value = "/orderpanel", method = RequestMethod.GET)
     public String dbaPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());
-        return "dba";
+        return "account/dba";
     }
     
     @RequestMapping(value = "/cabinet", method = RequestMethod.GET)

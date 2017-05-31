@@ -62,8 +62,8 @@ public class AccountController {
         //SAVE USER
         AccountService.saveUser(user);
 
-        model.addAttribute("success", "User " + user.getSsoId() + " has been registered successfully");
-        return "registrationsuccess";
+        model.addAttribute("success", user.getSsoId() + " has been registered");
+        return "account/login";
     }
    
     @RequestMapping(value = "account/{userId}")
