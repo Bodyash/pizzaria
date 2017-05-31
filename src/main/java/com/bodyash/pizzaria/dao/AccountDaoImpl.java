@@ -5,7 +5,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.bodyash.pizzaria.bean.UserAccount;
-import com.bodyash.pizzaria.bean.UserAccountRole;
 import com.bodyash.pizzaria.dao.AccountDao;
 
 

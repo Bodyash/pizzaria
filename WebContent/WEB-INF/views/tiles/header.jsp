@@ -18,10 +18,12 @@
         <li><a href="/desserts">Desserts</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-              <sec:authorize access="hasRole('ADMIN')">
+       <sec:authorize access="hasRole('ADMIN')">
                 <li>
                     <a href="<c:url value="/adminpanel"/>"> Admin Panel</a>
 				</li>
+        </sec:authorize>
+       <sec:authorize access="hasRole('DBA')">
 				<li>
 				    <a href="<c:url value="/orderpanel"/>"> Order Panel</a>
                 </li>
