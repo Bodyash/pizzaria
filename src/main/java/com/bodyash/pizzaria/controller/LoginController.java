@@ -31,24 +31,6 @@ public class LoginController {
         }
         return "redirect:/login?logout";
     }
-    
-    @RequestMapping(value = "/adminpanel", method = RequestMethod.GET)
-    public String adminPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "account/adminpanel";
-    }
- 
-    @RequestMapping(value = "/orderpanel", method = RequestMethod.GET)
-    public String dbaPage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "account/dba";
-    }
-    
-    @RequestMapping(value = "/cabinet", method = RequestMethod.GET)
-    public String usePage(ModelMap model) {
-        model.addAttribute("user", getPrincipal());
-        return "account/cabinet";
-    }
  
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {

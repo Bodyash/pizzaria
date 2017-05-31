@@ -1,8 +1,6 @@
 package com.bodyash.pizzaria.controller;
 
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -10,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,7 +24,7 @@ public class AccountController {
     UserAccountRoleService userAccountRoleService;
 
     @Autowired
-    AccountService AccountService;
+    AccountService accountService;
     
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView createForm() {
@@ -58,28 +54,10 @@ public class AccountController {
         	System.out.println("Profile : "+ role.getType());
         }
         //SAVE USER
-        AccountService.saveUser(user);
+        accountService.saveUser(user);
 
         model.addAttribute("success", user.getSsoId() + " has been registered");
         return "account/login";
-    }
-   
-    @RequestMapping(value = "account/{userId}")
-    public String getUserProfile(@PathVariable String userId, Map<String, Object> model) {
-    	try{
-    		UserAccount userAccount = AccountService.findById(Integer.valueOf(userId));
-    		 model.put("user", userAccount);
-    	     return "account/view";
-    	}catch (Exception e) {
-			System.out.println("Wrong User ID in Path Variable");
-		}
-	    return "home";
-       
-    }
-    
-    @ModelAttribute("roles")
-    public List<UserAccountRole> initializeProfiles() {
-        return userAccountRoleService.findAll();
     }
 
 

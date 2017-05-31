@@ -13,38 +13,36 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/">Pizza</a></li>
-        <li><a href="/drinks">Drinks</a></li>
-        <li><a href="/desserts">Desserts</a></li>
+        <li><a href="/"> Pizza</a></li>
+        <li><a href="/drinks"> Drinks</a></li>
+        <li><a href="/desserts"> Desserts</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <sec:authorize access="hasRole('ADMIN')">
                 <li>
-                    <a href="<c:url value="/adminpanel"/>"> Admin Panel</a>
+                    <a href="<c:url value="/adminpanel"/>"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Admin Panel</a>
 				</li>
         </sec:authorize>
        <sec:authorize access="hasRole('DBA')">
 				<li>
-				    <a href="<c:url value="/orderpanel"/>"> Order Panel</a>
+				    <a href="<c:url value="/orderpanel"/>"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Order Panel</a>
                 </li>
         </sec:authorize>
       	<li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 
             <sec:authorize access="!isAuthenticated()">
                 <li>
-                    <a href="<c:url value="/login"/>" role="button">Login</a>
+                    <a href="<c:url value="/login"/>" role="button"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a>
                 </li>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
                 <li>
                     <a href="/cabinet" role="button">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                        &nbsp;
-                        <sec:authentication property="principal.username"/>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <sec:authentication property="principal.username"/>
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value="/logout"/>" role="button">Logout</a>
+                    <a href="<c:url value="/logout"/>" role="button"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
                 </li>
             </sec:authorize>
       </ul>

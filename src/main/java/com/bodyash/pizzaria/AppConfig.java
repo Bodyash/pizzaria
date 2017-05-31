@@ -3,6 +3,7 @@ package com.bodyash.pizzaria;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -95,6 +96,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         resolver.setOrder(0);
         return resolver;
     }
+    
 
     @Bean
     public TilesConfigurer tilesConfig() {
@@ -107,6 +109,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.ignoreUnknownPathExtensions(false).defaultContentType(MediaType.TEXT_HTML);
+    }
+    
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(RoleToUserAccountRoleTypeConverter());
     }
 
     @Override

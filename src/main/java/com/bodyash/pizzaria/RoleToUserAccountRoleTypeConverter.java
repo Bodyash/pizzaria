@@ -10,13 +10,30 @@ public class RoleToUserAccountRoleTypeConverter implements Converter<Object, Use
 
     @Autowired
     private UserAccountRoleService userAccountRoleService;
-	
+
 	@Override
 	public UserAccountRole convert(Object element) {
         Integer id = Integer.parseInt((String)element);
         UserAccountRole profile= userAccountRoleService.findById(id);
-        System.out.println("Profile : "+profile);
+        System.out.println("Role : " + profile);
         return profile;
-    }
+	}
+	
+	
+	/*public UserAccountRole convert(Object element) {
+        System.out.println("Converter is working....");
+        Integer id = Integer.parseInt((String)element);
+        UserAccountRole profile= userAccountRoleService.findById(id);
+        System.out.println("Role : " + profile);
+        return profile;
+    }*/
+	
+   /* @Override
+    public UserAccountRole convert(Object element) {
+        String type = (String)element;
+        UserAccountRole profile= userAccountRoleService.findByType(type);
+        System.out.println("Role ... : "+profile);
+        return profile;
+    }*/
 
 }
