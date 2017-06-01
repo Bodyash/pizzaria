@@ -30,13 +30,16 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
 
 	@Override
 	public void deleteBySSO(String sso) {
-		// TODO Auto-generated method stub
-		
+        UserAccount user = (UserAccount) getEntityManager()
+                .createQuery("SELECT u FROM account u WHERE u.ssoId LIKE :ssoId")
+                .setParameter("ssoId", sso)
+                .getSingleResult();
+        delete(user);
 	}
 
-	@Override
-	public List<UserAccount> findAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	@SuppressWarnings("unchecked")
+    public List<UserAccount> findAllUsers() {
+        List<UserAccount> users = getSession().createCriteria(UserAccount.class).list();
+        return users;
+    }
 }

@@ -55,5 +55,30 @@
 		<put-attribute name="body" value="/WEB-INF/views/info/about.jsp" />
 	</definition>
 	
+	<definition name="account/cabinet" extends="base">
+		<put-attribute name="title" value="Cabinet" />
+		<put-attribute name="body" value="/WEB-INF/views/account/cabinet.jsp" />
+	</definition>
+	
+	<definition name="account/adminpanel" extends="base">
+		<put-attribute name="title" value="Adminpanel" />
+		<put-attribute name="body" value="/WEB-INF/views/account/adminpanel.jsp" />
+	</definition>
+
+	<definition name="account/dba" extends="base">
+		<put-attribute name="title" value="DBA" />
+		<put-attribute name="body" value="/WEB-INF/views/account/dba.jsp" />
+	</definition>
+	
+	<definition name="account/newuser" extends="base">
+		<put-attribute name="title" value="NewUser" />
+		<put-attribute name="body" value="/WEB-INF/views/account/newuser.jsp" />
+	</definition>
+	
+	<definition name="account/userlist" extends="base">
+		<put-attribute name="title" value="UserList" />
+		<put-attribute name="body" value="/WEB-INF/views/account/userlist.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

@@ -57,6 +57,12 @@ public class AdminController {
         return "account/newuser";
     }
     
+    @RequestMapping(value = "adminpanel/userlist", method = RequestMethod.GET)
+    public String userList(ModelMap model) {
+        model.addAttribute("userlist", accountService.findAllUsers());
+        return "account/userlist";
+    }
+    
     @RequestMapping(value = "adminpanel/newuser", method = RequestMethod.POST)
     public String saveRegistration(@Valid UserAccount user, @RequestParam("userRoles") String userRoles,
             BindingResult result, ModelMap model) {

@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Adminpanel</title>
+<link href="/resources/css/admin.css" rel="stylesheet">
 </head>
 <body>
-    <div class="success">
-        Dear <strong>${user}</strong>, Welcome to Admin Page.
-        <br/>
-        Would you like to <a href="<c:url value='adminpanel/newuser' />">Add Some Users</a> to keep yourself busy?
-        <br/>
-        <a href="<c:url value="/logout" />">Logout</a>
+    <div class="flex-container">
+        Dear <strong> ${user}</strong>, Welcome to Admin Page.<br><br>
+		<a href="<c:url value='/adminpanel/newuser' />">Add Some Users</a><br><br>
+		<a href="<c:url value='/adminpanel/userlist' />">UserList (Edit, Create New User, Delete)</a>
     </div>
 </body>
 </html>
