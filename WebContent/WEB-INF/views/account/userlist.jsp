@@ -3,14 +3,12 @@
 <html>
  
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Users List</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="/resources/css/admin.css" rel="stylesheet">
 </head>
  
 <body>
-    <div class="generic-container">
+    <div class="flex-container">
         <div class="panel panel-default">
               <!-- Default panel contents -->
             <div class="panel-heading"><span class="lead">List of Users </span></div>

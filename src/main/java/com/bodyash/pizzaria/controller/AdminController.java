@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,12 @@ public class AdminController {
         return "account/cabinet";
     }
     
+    @RequestMapping(value = "adminpanel/userlist", method = RequestMethod.GET)
+    public String userList(ModelMap model) {
+        model.addAttribute("userlist", accountService.findAllUsers());
+        return "account/userlist";
+    }
+    
     @RequestMapping(value = "adminpanel/newuser", method = RequestMethod.GET)
     public String newRegistration(ModelMap model) {
         UserAccount user = new UserAccount();
@@ -57,10 +64,10 @@ public class AdminController {
         return "account/newuser";
     }
     
-    @RequestMapping(value = "adminpanel/userlist", method = RequestMethod.GET)
-    public String userList(ModelMap model) {
-        model.addAttribute("userlist", accountService.findAllUsers());
-        return "account/userlist";
+    @RequestMapping(value = { "adminpanel/delete-user-{ssoId}" }, method = RequestMethod.GET)
+    public String deleteUser(@PathVariable String ssoId) {
+        accountService.deleteUserBySSO(ssoId);
+        return "redirect:/adminpanel/userlist";
     }
     
     @RequestMapping(value = "adminpanel/newuser", method = RequestMethod.POST)

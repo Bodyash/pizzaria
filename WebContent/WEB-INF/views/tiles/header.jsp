@@ -2,7 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <nav class="navbar navbar-default">
-<a class="navbar-brand" href="/"><img src="resources/images/main_logo.png" height="200" width="200"/></a>
+<a class="navbar-brand" href="/"><img src="/resources/images/main_logo.png" height="200" width="200"/></a>
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

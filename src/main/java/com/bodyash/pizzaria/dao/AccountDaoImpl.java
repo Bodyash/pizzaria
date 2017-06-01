@@ -30,10 +30,7 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
 
 	@Override
 	public void deleteBySSO(String sso) {
-        UserAccount user = (UserAccount) getEntityManager()
-                .createQuery("SELECT u FROM account u WHERE u.ssoId LIKE :ssoId")
-                .setParameter("ssoId", sso)
-                .getSingleResult();
+        UserAccount user = this.findBySSO(sso);
         delete(user);
 	}
 
