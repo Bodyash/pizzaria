@@ -1,5 +1,7 @@
 package com.bodyash.pizzaria.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -23,9 +25,18 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
 
 	@Override
 	public void save(UserAccount user) {
-		/*for (UserAccountRole uar : user.getUserRoles()) {
-			new UserAccountRoleDaoIml().persist(uar);
-		}*/
 		persist(user);
+	}
+
+	@Override
+	public void deleteBySSO(String sso) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<UserAccount> findAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

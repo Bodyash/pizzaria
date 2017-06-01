@@ -1,5 +1,7 @@
 package com.bodyash.pizzaria.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +37,27 @@ public class AccountServiceImpl implements AccountService {
         System.out.println("Encrypted pass: " + user.getPassword());
         dao.save(user);
 	}
+	
+	public void updateUser(UserAccount user) {
+        UserAccount entity = dao.findById(user.getId());
+        if(entity!=null){
+            entity.setSsoId(user.getSsoId());
+            entity.setPassword(user.getPassword());
+            entity.setUserProfiles(user.getUserRoles());
+        }
+    }
+ 
+    public void deleteUserBySSO(String sso) {
+        dao.deleteBySSO(sso);
+    }
+ 
+    public List<UserAccount> findAllUsers() {
+        return dao.findAllUsers();
+    }
+ 
+    public boolean isUserSSOUnique(Integer id, String sso) {
+        UserAccount user = findBySso(sso);
+        return ( user == null || ((id != null) && (user.getId() == id)));
+    }
 
 }

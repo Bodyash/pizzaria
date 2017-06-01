@@ -1,11 +1,17 @@
 package com.bodyash.pizzaria.dao;
 
+import java.util.List;
+
 import com.bodyash.pizzaria.bean.UserAccount;
 
 public interface AccountDao {
-    UserAccount findById(int id);
+    public UserAccount findById(int id);
     
-    UserAccount findBySSO(String sso);
+    public UserAccount findBySSO(String sso);
 
-	void save(UserAccount user);
+    public void save(UserAccount user);
+	
+    public void deleteBySSO(String sso);
+    
+    public List<UserAccount> findAllUsers();
 }
