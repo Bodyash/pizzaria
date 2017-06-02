@@ -35,8 +35,14 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
 	}
 
 	@SuppressWarnings("unchecked")
+	@Override
     public List<UserAccount> findAllUsers() {
         List<UserAccount> users = getSession().createCriteria(UserAccount.class).list();
         return users;
     }
+	
+	@Override
+	public void updateUser(UserAccount user){
+		update(user);
+	}
 }

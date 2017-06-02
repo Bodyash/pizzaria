@@ -30,7 +30,6 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     protected Session getSession(){
         return sessionFactory.getCurrentSession();
     }
- 
 
     public T getByKey(PK key) {
         return (T) getSession().get(persistentClass, key);
@@ -45,7 +44,10 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     }
     
     protected void update(T entity) {
-        entityManager.merge(entity);
+    	if (entity == null){
+    		System.out.println("Entity is null");
+    	}
+    	getSession().merge(entity);
     }
 
     @SuppressWarnings("deprecation")

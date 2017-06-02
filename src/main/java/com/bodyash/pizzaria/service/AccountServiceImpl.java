@@ -42,8 +42,15 @@ public class AccountServiceImpl implements AccountService {
         UserAccount entity = dao.findById(user.getId());
         if(entity!=null){
             entity.setSsoId(user.getSsoId());
-            entity.setPassword(user.getPassword());
+            if(entity.getPassword().startsWith("$") && entity.getPassword().length() == 60){
+            	System.out.println("Password already Encrypted!");
+            	entity.setPassword(user.getPassword());
+            }else{
+            	System.out.println("Password changed! Need to encrypt!");
+            	entity.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            }
             entity.setUserProfiles(user.getUserRoles());
+            dao.updateUser(entity);
         }
     }
  

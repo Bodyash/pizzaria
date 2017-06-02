@@ -90,8 +90,53 @@ public class AdminController {
                 System.out.println("Role : "+ role.getType());
             }
         }
-        accountService.saveUser(user);
+        if(accountService.findBySso(user.getSsoId()) != null){
+            model.addAttribute("success", "User " + user.getSsoId() + " IS ALREADY in DB");
+            return "registrationsuccess";
+        }else{
+        	accountService.saveUser(user);
+        }
         model.addAttribute("success", "User " + user.getSsoId() + " has been registered successfully");
+        return "registrationsuccess";
+    }
+    
+    @RequestMapping(value = { "adminpanel/edit-user-{ssoId}" }, method = RequestMethod.GET)
+    public String editUser(@PathVariable String ssoId, ModelMap model) {
+        UserAccount user = accountService.findBySso(ssoId);
+        model.addAttribute("user", user);
+        model.addAttribute("edit", true);
+        return "account/newuser";
+    }
+    
+    @RequestMapping(value = { "adminpanel/edit-user-{ssoId}" }, method = RequestMethod.POST)
+    public String updateUser(@Valid UserAccount user, BindingResult result, @RequestParam("userRoles") String userRoles,
+            ModelMap model, @PathVariable String ssoId) {
+        if (result.hasErrors()) {
+            return "account/newuser";
+        }
+ 
+        /*//Uncomment below 'if block' if you WANT TO ALLOW UPDATING SSO_ID in UI which is a unique key to a User.
+        if(!userService.isUserSSOUnique(user.getId(), user.getSsoId())){
+            FieldError ssoError =new FieldError("user","ssoId",messageSource.getMessage("non.unique.ssoId", new String[]{user.getSsoId()}, Locale.getDefault()));
+            result.addError(ssoError);
+            return "registration";
+        }*/
+        
+        System.out.println("SSO ID : "+user.getSsoId());
+        System.out.println("Password : "+user.getPassword());
+        System.out.println("Checking UserRoles....");
+        if(user.getUserRoles()!=null){
+        	if(userRoles.length()>0){
+        		user.setUserProfiles(this.requestUserRolesConverter(userRoles));
+        	}
+            for(UserAccountRole role : user.getUserRoles()){
+                System.out.println("Roles after requestUserRolesConverter method : "+ role.getType());
+            }
+        }
+ 
+        accountService.updateUser(user);
+ 
+        model.addAttribute("success", "User " + user.getSsoId() + " updated successfully");
         return "registrationsuccess";
     }
     

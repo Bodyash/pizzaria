@@ -14,4 +14,6 @@ public interface AccountDao {
     public void deleteBySSO(String sso);
     
     public List<UserAccount> findAllUsers();
+    
+    public void updateUser(UserAccount user);
 }

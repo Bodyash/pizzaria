@@ -20,9 +20,14 @@
 					<p>You have been logged out successfully.</p>
 				</div>
 			</c:if>
-			<c:if test="${success != null}">
+			<c:if test="${param.success != null}">
 				<div class="alert alert-success">
-					<p>${success}</p>
+					<p>${param.success}</p>
+				</div>
+			</c:if>
+			<c:if test="${param.unique != null}">
+				<div class="alert alert-danger">
+					<p>${param.unique}</p>
 				</div>
 			</c:if>
 			<input type="text" class="signUpInput" id="username" name="ssoId"

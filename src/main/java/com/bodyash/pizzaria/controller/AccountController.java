@@ -53,11 +53,14 @@ public class AccountController {
         for(UserAccountRole role : user.getUserRoles()){
         	System.out.println("Profile : "+ role.getType());
         }
-        //SAVE USER
-        accountService.saveUser(user);
-
-        model.addAttribute("success", user.getSsoId() + " has been registered");
-        return "account/login";
+        if(accountService.findBySso(user.getSsoId()) != null){
+        	model.addAttribute("unique", user.getSsoId() + " already registered, login!");
+            return "redirect:/login";
+        }else{
+        	accountService.saveUser(user);
+            model.addAttribute("success", user.getSsoId() + " has been registered");
+            return "redirect:/login";
+        }
     }
 
 
