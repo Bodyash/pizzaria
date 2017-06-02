@@ -12,7 +12,7 @@
     <div class="flex-container">
         Dear <strong> ${user}</strong>, Welcome to Admin Page.<br><br>
 		<a href="<c:url value='/adminpanel/newuser' />">Add Some Users</a><br><br>
-		<a href="<c:url value='/adminpanel/userlist' />">UserList (Edit, Create New User, Delete)</a>
+		<a href="<c:url value='/adminpanel/userlist' />">UserList (Edit, Create New User, Delete)</a><br>
     </div>
 </body>
 </html>

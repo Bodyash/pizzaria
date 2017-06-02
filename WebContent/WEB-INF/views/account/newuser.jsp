@@ -14,7 +14,15 @@
 <body>
     <div class="flex-container">
     
-    <h1>New User Registration Form</h1>
+	<c:choose>
+		<c:when test="${edit}">
+			<h1>Now you are editing user: "<c:out value="${user.ssoId}"></c:out>"</h1>
+		</c:when>
+        <c:otherwise>
+			<h1>New User Registration Form</h1>
+         </c:otherwise>
+	</c:choose>
+    
     <form:form method="POST" modelAttribute="user" class="form-horizontal">
     <form:input type="hidden" path="id" id="id"/>
         <div class="row">

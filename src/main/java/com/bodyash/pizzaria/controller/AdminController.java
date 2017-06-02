@@ -1,5 +1,6 @@
 package com.bodyash.pizzaria.controller;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -51,26 +52,32 @@ public class AdminController {
         return "account/cabinet";
     }
     
-    @RequestMapping(value = "adminpanel/userlist", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminpanel/userlist", method = RequestMethod.GET)
     public String userList(ModelMap model) {
         model.addAttribute("userlist", accountService.findAllUsers());
         return "account/userlist";
     }
     
-    @RequestMapping(value = "adminpanel/newuser", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminpanel/userlist", method = RequestMethod.POST)
+    public String searchUser(@RequestParam("ssoId") String ssoId, ModelMap model) {
+        model.addAttribute("userlist", Arrays.asList(accountService.findBySso(ssoId)));
+        return "account/userlist";
+    }
+    
+    @RequestMapping(value = "/adminpanel/newuser", method = RequestMethod.GET)
     public String newRegistration(ModelMap model) {
         UserAccount user = new UserAccount();
         model.addAttribute("user", user);
         return "account/newuser";
     }
     
-    @RequestMapping(value = { "adminpanel/delete-user-{ssoId}" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/adminpanel/delete-user-{ssoId}" }, method = RequestMethod.GET)
     public String deleteUser(@PathVariable String ssoId) {
         accountService.deleteUserBySSO(ssoId);
         return "redirect:/adminpanel/userlist";
     }
     
-    @RequestMapping(value = "adminpanel/newuser", method = RequestMethod.POST)
+    @RequestMapping(value = "/adminpanel/newuser", method = RequestMethod.POST)
     public String saveRegistration(@Valid UserAccount user, @RequestParam("userRoles") String userRoles,
             BindingResult result, ModelMap model) {
  
@@ -100,7 +107,7 @@ public class AdminController {
         return "registrationsuccess";
     }
     
-    @RequestMapping(value = { "adminpanel/edit-user-{ssoId}" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/adminpanel/edit-user-{ssoId}" }, method = RequestMethod.GET)
     public String editUser(@PathVariable String ssoId, ModelMap model) {
         UserAccount user = accountService.findBySso(ssoId);
         model.addAttribute("user", user);
@@ -108,7 +115,8 @@ public class AdminController {
         return "account/newuser";
     }
     
-    @RequestMapping(value = { "adminpanel/edit-user-{ssoId}" }, method = RequestMethod.POST)
+    
+    @RequestMapping(value = { "/adminpanel/edit-user-{ssoId}" }, method = RequestMethod.POST)
     public String updateUser(@Valid UserAccount user, BindingResult result, @RequestParam("userRoles") String userRoles,
             ModelMap model, @PathVariable String ssoId) {
         if (result.hasErrors()) {

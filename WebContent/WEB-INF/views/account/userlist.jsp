@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
  
 <head>
@@ -12,6 +13,10 @@
         <div class="panel panel-default">
               <!-- Default panel contents -->
             <div class="panel-heading"><span class="lead">List of Users </span></div>
+		<form:form method="POST">
+				<input type="text" id="ssoId" placeholder="Enter Username Here To Search User in all DataBase" name="ssoId" class="form-control">
+				<input type="submit" class="btn btn-secondary" value="Search">
+		</form:form>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -41,9 +46,7 @@ custom-width">delete</a></td>
                 </tbody>
             </table>
         </div>
-        <div class="well">
             <a href="<c:url value='/adminpanel/newuser' />">Add New User</a>
-        </div>
     </div>
 </body>
 </html>
