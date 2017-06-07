@@ -39,7 +39,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		return new OrderDaoImpl();
 	}
 	
-	@Bean(name = "pizzaDao")
+	@Bean(name = "productDao")
 	public ProductDao ProductDao() {
 		return new ProductDaoImpl();
 	}

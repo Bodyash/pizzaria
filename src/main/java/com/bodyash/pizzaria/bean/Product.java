@@ -26,6 +26,7 @@ public class Product {
     private String description;
     @Column(name = "img_url")
     private String imgUrl;
+    
     private Category category;
     
 	public int getId() {

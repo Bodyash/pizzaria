@@ -34,7 +34,7 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
         delete(user);
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
     public List<UserAccount> findAllUsers() {
         List<UserAccount> users = getSession().createCriteria(UserAccount.class).list();
