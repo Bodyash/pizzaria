@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bodyash.pizzaria.bean.Category;
+import com.bodyash.pizzaria.bean.Product;
 import com.bodyash.pizzaria.bean.UserAccount;
 import com.bodyash.pizzaria.bean.UserAccountRole;
 import com.bodyash.pizzaria.service.AccountService;
+import com.bodyash.pizzaria.service.ProductService;
 import com.bodyash.pizzaria.service.UserAccountRoleService;
 
 @Controller
@@ -30,6 +33,9 @@ public class AdminController {
 	
     @Autowired
     AccountService accountService;
+    
+    @Autowired
+    ProductService productService;
     
     @Autowired
     UserAccountRoleService userAccountRoleService;
@@ -51,6 +57,61 @@ public class AdminController {
         model.addAttribute("user", getPrincipal());
         return "account/cabinet";
     }
+    
+    @RequestMapping(value = "/adminpanel/productlist", method = RequestMethod.GET)
+    public String productList(ModelMap model) {
+    	model.addAttribute("products", productService.listAllProducts());
+        return "account/productlist";
+    }
+    
+    @RequestMapping(value = "/adminpanel/newproduct", method = RequestMethod.GET)
+    public String newProduct(ModelMap model) {
+        Product prod = new Product();
+        model.addAttribute("prod", prod);
+        model.addAttribute("category", Category.values());
+        return "account/newproduct";
+    }
+    
+    @RequestMapping(value = "/adminpanel/newproduct", method = RequestMethod.POST)
+    public String saveProduct(@Valid Product prod,
+            BindingResult result, ModelMap model) {
+ 
+        if (result.hasErrors()) {
+            System.out.println("There are errors");
+            return "adminpanel/newproduct";
+        }
+        productService.addNewProduct(prod);
+        model.addAttribute("success", "Product " + prod.getName() + " has been saved successfully");
+        return "registrationsuccess";
+    }
+    
+    @RequestMapping(value = { "/adminpanel/edit-product-{id}" }, method = RequestMethod.GET)
+    public String editProduct(@PathVariable int id, ModelMap model) {
+        Product prod = productService.findProductById(id);
+        model.addAttribute("prod", prod);
+        model.addAttribute("edit", true);
+        return "account/newproduct";
+    }
+    
+    @RequestMapping(value = "/adminpanel/edit-product-{id}", method = RequestMethod.POST)
+    public String saveProductEdit(@PathVariable int id, @Valid Product prod,
+            BindingResult result, ModelMap model) {
+ 
+        if (result.hasErrors()) {
+            System.out.println("There are errors");
+            return "adminpanel/newproduct";
+        }
+        productService.updateProduct(prod);;
+        model.addAttribute("success", "Product" + prod.getName() + " has been edited successfully");
+        return "registrationsuccess";
+    }
+    
+    @RequestMapping(value = { "/adminpanel/delete-product-{id}" }, method = RequestMethod.GET)
+    public String deleteProduct(@PathVariable int id) {
+        productService.deleteProduct(id);
+        return "redirect:/adminpanel/userlist";
+    }
+    
     
     @RequestMapping(value = "/adminpanel/userlist", method = RequestMethod.GET)
     public String userList(ModelMap model) {
@@ -83,7 +144,7 @@ public class AdminController {
  
         if (result.hasErrors()) {
             System.out.println("There are errors");
-            return "newuser";
+            return "/adminpanel/newuser";
         }
          
         System.out.println("SSO ID : "+user.getSsoId());

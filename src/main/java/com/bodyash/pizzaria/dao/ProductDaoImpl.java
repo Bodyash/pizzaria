@@ -24,11 +24,12 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 		persist(p);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public Product findProductByCategory(Category c) {
+	public List<Product> findProductByCategory(Category c) {
     	Criteria crit = createEntityCriteria();
         crit.add(Restrictions.eq("category", c));
-        return (Product) crit.uniqueResult();
+        return (List<Product>) crit.list();
 	}
 
 	@Override
@@ -39,6 +40,12 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 	@Override
 	public void updateProduct(Product p) {
 		update(p);
+	}
+
+	@Override
+	public void deleteProduct(Product p) {
+		delete(p);
+		
 	}
 
 }

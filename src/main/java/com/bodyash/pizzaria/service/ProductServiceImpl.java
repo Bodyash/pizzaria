@@ -25,13 +25,11 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public void addNewProduct(Product p) {
-		// TODO Parse ALL THIS OBJECT MAYBE, BEFORE PERSIST?
 		productDao.addNewProduct(p);
-		
 	}
 
 	@Override
-	public Product findProductByCategory(Category c) {
+	public List<Product> findProductByCategory(Category c) {
 		return productDao.findProductByCategory(c);
 	}
 
@@ -43,7 +41,16 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void updateProduct(Product p) {
 		productDao.updateProduct(p);
-		
 	}
+
+	@Override
+	public void deleteProduct(int id) {
+		Product p = productDao.findProductById(id);
+		if (p != null){
+			productDao.deleteProduct(p);
+		}
+	}
+	
+	
 
 }

@@ -12,10 +12,12 @@ public interface ProductService {
 	
 	public void addNewProduct(Product p);
 	
-	public Product findProductByCategory(Category c);
+	public List<Product> findProductByCategory(Category c);
 	
 	public Product findProductById(int id);
 	
 	public void updateProduct(Product p);
+	
+	public void deleteProduct(int id);
 	
 }

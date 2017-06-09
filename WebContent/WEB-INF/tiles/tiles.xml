@@ -80,5 +80,15 @@
 		<put-attribute name="body" value="/WEB-INF/views/account/userlist.jsp" />
 	</definition>
 	
+	<definition name="account/productlist" extends="base">
+		<put-attribute name="title" value="ProductList" />
+		<put-attribute name="body" value="/WEB-INF/views/account/productlist.jsp" />
+	</definition>
+	
+	<definition name="account/newproduct" extends="base">
+		<put-attribute name="title" value="NewProduct" />
+		<put-attribute name="body" value="/WEB-INF/views/account/newproduct.jsp" />
+	</definition>
+	
 
 </tiles-definitions>

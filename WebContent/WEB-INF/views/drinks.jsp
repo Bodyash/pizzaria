@@ -1,32 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
 <link href="/resources/css/content.css" rel="stylesheet">
 </head>
 <body>
 <ul class="flex-container">
-  <li class="flex-item">
-  	<article class="block__content">
-  		<header>
-			<h3>DRINK IT</h3>
-		</header>
-		<section class="description">
-			<p>AND GAIN POWER OVER9000!
-		</section>
-		<section class="food_img">
-			<img alt="" src="https://cdn.ofix.com/Images/SiteImages/ProductOriginalImage/Coca-Cola-Kutu-330-Ml-24-Lu_RI23119FT1MF114491.jpg" height="220px" width="220px">
-		</section>
-		<footer>
-			<a class="btn btn-primary">Add to Cart</a>
-		</footer>
-  	</article>
-  </li>
-  <li class="flex-item">2</li>
-  <li class="flex-item">3</li>
-  <li class="flex-item">4</li>
-  <li class="flex-item">5</li>
+	<c:forEach items="${drinks}" var="drink">
+  		<li class="flex-item">
+  		<article class="block__content">
+  			<header>
+				<h3>${drink.name}</h3>
+			</header>
+			<section class="description">
+				<p>${drink.description}
+			</section>
+			<section class="food_img">
+				<img alt="" src="${drink.imgUrl}" height="220px" width="220px">
+			</section>
+			<footer>
+				<a class="btn btn-primary">Add to Cart (${drink.price} ₴)</a>
+			</footer>
+  		</article>
+ 		 </li>
+	</c:forEach>
 </ul>
 </body>
 </html>
