@@ -1,10 +1,13 @@
 package com.bodyash.pizzaria;
 
+import java.nio.charset.Charset;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -73,6 +76,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		return new RoleToUserAccountRoleTypeConverter();
 	}
 	
+	@Bean
+	public StringHttpMessageConverter stringHttpMessageConverter() {
+	    return new StringHttpMessageConverter(Charset.forName("UTF-8"));
+	}
 	
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
