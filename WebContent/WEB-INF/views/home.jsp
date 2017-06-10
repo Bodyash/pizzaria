@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -20,7 +21,7 @@
 				<img alt="" src="${pizza.imgUrl}" height="220px" width="220px">
 			</section>
 			<footer>
-				<a class="btn btn-primary">Add to Cart (${pizza.price} ₴)</a>
+				<a class="btn btn-primary">Add to Cart (<fmt:formatNumber value="${pizza.price}" type="currency" currencyCode="UAH"/>)</a>
 			</footer>
   		</article>
  		 </li>

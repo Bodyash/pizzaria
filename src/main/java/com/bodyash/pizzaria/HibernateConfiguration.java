@@ -34,7 +34,7 @@ public class HibernateConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/pizzaria");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/pizzaria?useUnicode=true&useSSL=false");
 		dataSource.setUsername("root");
 		dataSource.setPassword("test1230");
 		return dataSource;
@@ -46,6 +46,9 @@ public class HibernateConfiguration {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.connection.CharSet", "utf8");
+		properties.put("hibernate.connection.characterEncoding", "utf8");
+		properties.put("hibernate.connection.useUnicode", "true");
 		return properties;
 	}
 

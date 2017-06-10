@@ -75,7 +75,9 @@ public class AdminController {
     @RequestMapping(value = "/adminpanel/newproduct", method = RequestMethod.POST)
     public String saveProduct(@Valid Product prod,
             BindingResult result, ModelMap model) {
- 
+    	
+    	System.out.println("Тест");
+    	
         if (result.hasErrors()) {
             System.out.println("There are errors");
             return "adminpanel/newproduct";
@@ -109,7 +111,7 @@ public class AdminController {
     @RequestMapping(value = { "/adminpanel/delete-product-{id}" }, method = RequestMethod.GET)
     public String deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
-        return "redirect:/adminpanel/userlist";
+        return "redirect:/adminpanel/productlist";
     }
     
     

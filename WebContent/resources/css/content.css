@@ -1,6 +1,6 @@
-@import "compass/css3";
-
-.flex-container {
+@media (min-width: 930px) { /* это будет показано при разрешении монитора до 930 пикселей */
+  .content-wrapper {padding: 0;} /* основное содержимое занимает всё пространство окна */
+  .flex-container {
   padding-bottom: 5em;
   margin-left: 15em;
   margin-right: 15em;
@@ -23,7 +23,7 @@
 
 .flex-item {
   background: white;
-  padding: 0px;
+  margin-left: -2.5em;
   width: 350px;
   height: 350px;
   margin-top: 10px;
@@ -35,4 +35,43 @@
 
 .btn {
 	margin-top: 5px;
+}
+}
+
+@media (max-width: 930px) and (min-width: 270px) {  /* для разрешения экрана от 470 до 930 пикселей */
+  .flex-container {
+  padding-bottom: 5em;
+  margin-bottom: 7em;
+  list-style: none;
+  
+  background: rgba(25, 140, 42, 0.8);
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  border-radius: 10px;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: white;
+  margin-left: -2.5em;
+  width: 350px;
+  height: 350px;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.btn {
+	margin-top: 5px;
+}
 }
