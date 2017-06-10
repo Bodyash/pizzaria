@@ -5,14 +5,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>DBA page</title>
-    <link href="<c:url value='/static/css/bootstrap.css' />" rel="stylesheet"></link>
-    <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
+<link href="/resources/css/admin.css" rel="stylesheet">
 </head>
 <body>
-    <div class="success">
-        Dear <strong>${user}</strong>, Welcome to DBA Page.
-        <br/>
-        <a href="<c:url value="/logout" />">Logout</a>
+    <div class="flex-container">
+        Dear <strong> ${user}</strong>, Welcome to Order Panel Page.<br><br>
+		<a href="<c:url value="/logout" />">Logout</a>
     </div>
 </body>
 </html>

@@ -94,7 +94,9 @@ input {
 }
 html,
 body {
-  height: 93.5%;
+	display: flex;
+    flex-direction: column;
+  	height: 100%;
 }
 .wrapper {
   display: flex;
