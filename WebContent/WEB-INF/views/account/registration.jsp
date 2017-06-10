@@ -7,6 +7,7 @@
 <script type="text/javascript" src="/resources/js/registration.js"></script>
 </head>
 <body>
+<div class="wrapper">
 	<div class="container">
 	 <form:form method="POST" modelAttribute="user" class="signUp" id="myForm">
 
@@ -18,6 +19,7 @@
 
 	</form:form>
 	</div>
+</div>
 	<!-- Looking for source of this page? Contact me: vk.com/id20444094 or +380637129869 -->
 </body>
 </html>

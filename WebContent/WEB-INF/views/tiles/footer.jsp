@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<nav class="nav navbar-default navbar-fixed-bottom flex-sm-row">
+<div class="footer">
+<nav class="nav navbar-default flex-sm-row my-bottom-nav">
    <div class="container-fluid" id="footer">
 <div class="row">
             <div class="col-md-1"></div>
@@ -26,6 +27,7 @@
         </div>
     </div>
 </nav>
+</div>
 
 
 

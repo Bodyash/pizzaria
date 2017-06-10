@@ -7,6 +7,7 @@
 <link href="/resources/css/login.css" rel="stylesheet">
 </head>
 <body>
+<div class="wrapper">
 	<div class="container">
 		<form action="${loginUrl}" method="post" class="signUp" id="myForm">
 			<h1 class="signUpTitle">Login Form</h1>
@@ -41,6 +42,7 @@
 				<a href="signup">Or SignUp</a>
 			</center>
 		</form>
+	</div>
 	</div>
 </body>
 </html>

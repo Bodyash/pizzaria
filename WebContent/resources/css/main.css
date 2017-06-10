@@ -7,6 +7,9 @@ body{
     background-color: rgb(206, 24, 24);
     color: white;
 }
+.my-bottom-nav {
+flex: 0 0 auto;
+}
 /* ÷вет пунктов навигационного меню */
 .navbar-default .navbar-nav > li > a {
     color: white;

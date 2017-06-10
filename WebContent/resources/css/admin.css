@@ -1,4 +1,4 @@
-
+@media (min-width: 930px) {
 .flex-container {
   padding-top:1em;
   padding-bottom:1em;
@@ -11,20 +11,21 @@
   
    border-radius: 10px;
    text-align: center;
+	}
 }
 
-.flex-item {
-  background: white;
-  padding: 0px;
-  width: 350px;
-  height: 350px;
-  margin-top: 10px;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 10px;
-}
 
-.btn {
-	margin-top: 5px;
+
+@media (max-width: 930px) and (min-width: 270px) {
+	.flex-container {
+ 	 padding-top:1em;
+ 	 padding-bottom:1em;
+ 	 margin-bottom: 7em;
+ 	 list-style: none;
+  
+ 	 background: rgba(255, 255, 255, 1);
+  
+ 	 border-radius: 10px;
+  	 text-align: center;
+	}
 }
