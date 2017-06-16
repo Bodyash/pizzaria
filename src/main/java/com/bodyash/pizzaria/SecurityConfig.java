@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setEncoding("UTF-8");
         filter.setForceEncoding(true);
         http.addFilterBefore(filter, CsrfFilter.class);
+        http.csrf().disable();
         
       http.authorizeRequests()
         .antMatchers("/", "/cart", "/drinks", "/desserts").permitAll()
@@ -59,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/cabinet").access("hasRole('USER') or hasRole('DBA') or hasRole('ADMIN')")
         .and().formLogin().loginPage("/login").failureUrl("/login?error")
         .usernameParameter("ssoId").passwordParameter("password")
-        .and().csrf()
         .and().exceptionHandling().accessDeniedPage("/403");
     }
 

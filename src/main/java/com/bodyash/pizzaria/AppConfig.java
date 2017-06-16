@@ -1,13 +1,17 @@
 package com.bodyash.pizzaria;
 
 import java.nio.charset.Charset;
+import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -21,16 +25,31 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesView;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.bodyash.pizzaria.bean.repo.CartRepository;
+import com.bodyash.pizzaria.bean.repo.InMemoryCartRepositoryImpl;
 import com.bodyash.pizzaria.dao.*;
 import com.bodyash.pizzaria.service.AccountService;
 import com.bodyash.pizzaria.service.AccountServiceImpl;
+import com.bodyash.pizzaria.service.CartServiceImpl;
 import com.bodyash.pizzaria.service.CustomAccountDetailService;
 import com.bodyash.pizzaria.service.UserAccountRoleServiceImpl;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration()
 @ComponentScan("com.bodyash.pizzaria")
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
+	
+	@Bean(name="CartRepository")
+	public CartRepository CartRepository(){
+		return new InMemoryCartRepositoryImpl();
+	}
+	
+	@Bean(name="CartService")
+	public CartServiceImpl CartService(){
+		return new CartServiceImpl();
+	}
 	
 	@Bean(name = "accountDao")
 	public AccountDao AccountDao() {
@@ -126,5 +145,15 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
+    
+    @Override
+    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+        final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+        final ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setSerializationInclusion(Include.NON_NULL);
+        converter.setObjectMapper(objectMapper);
+        converters.add(converter);
+        super.configureMessageConverters(converters);
     }
 }

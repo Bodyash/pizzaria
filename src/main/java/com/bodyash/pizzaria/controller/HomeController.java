@@ -1,5 +1,7 @@
 package com.bodyash.pizzaria.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +24,10 @@ public class HomeController {
     }
 	
 	@RequestMapping(value = "/drinks")
-    public ModelAndView drinks() {
+    public ModelAndView drinks(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("drinks");
 		mav.addObject("drinks", productService.findProductByCategory(Category.DRINK));
+		mav.addObject("cartId", request.getSession().getId());
 		return mav;
     }
 	
