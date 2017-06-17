@@ -21,7 +21,6 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public Cart read(String cartId) {
-		System.out.println("Cart Service got cartID and sending it to CartReporsitory: " + cartId);
 		return cartRepository.read(cartId);
 	}
 

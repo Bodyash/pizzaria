@@ -30,7 +30,6 @@ public class InMemoryCartRepositoryImpl implements CartRepository {
 
 	@Override
 	public Cart read(String cartId) {
-		System.out.println("Trying to return Cart with id " + cartId);
 		return listOfCarts.get(cartId);
 	}
 
