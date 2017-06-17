@@ -40,11 +40,8 @@ public class CartRestController {
 	
 	@RequestMapping(value="/{cartId}", method = RequestMethod.GET)
 	public @ResponseBody Cart read(@PathVariable(value = "cartId") String cartId){
-		System.out.println("Controller got PathVariable cartID: " + cartId);
 		Cart cart = cartService.read(cartId);
 		if(cart!=null){
-			System.out.println("Cart with id " + cart.getCartId() + " is already in CartRestController");
-			System.out.println(cart.getGrandTotal());
 			return cart;
 		}
 		return null;

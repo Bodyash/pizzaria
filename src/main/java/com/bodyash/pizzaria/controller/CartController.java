@@ -18,8 +18,13 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="/{cartId}", method = RequestMethod.GET)
-	public String getCart(@PathVariable("cartId") String cartId, Model model){
-		model.addAttribute("cartId", cartId);
-		return "cart";
+	public String getCart(@PathVariable("cartId") String cartId, Model model, HttpServletRequest request){
+		//If it is not your cart - redirect to your cart!
+		if (request.getSession().getId().equals(cartId)){
+			model.addAttribute("cartId", cartId);
+			return "cart";
+		}else{
+			return "redirect:/cart/"+request.getSession(true).getId();
+		}
 	}
 }

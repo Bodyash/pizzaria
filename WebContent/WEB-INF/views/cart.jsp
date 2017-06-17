@@ -12,7 +12,7 @@
 <script src='<c:url value="/resources/js/controllers.js" />'></script>
 <link href="/resources/css/admin.css" rel="stylesheet">
 </head>
-<body ng-controller="cartController" ng-init="initCartId('${cartId}')">
+<body ng-controller="cartController" ng-init="initCartId('${cartId}')"> 
 	<section>
 		<div class="jumbotron">
 			<div class="container">
@@ -40,7 +40,7 @@
 					<th>Action</th>
 				</tr>
 				<tr ng-repeat="item in cart.cartItems">
-					<td>{{item.product.productId}}-{{item.product.name}}</td>
+					<td>{{item.product.name}}</td>
 					<td>{{item.quantity}}</td>
 					<td>{{item.product.price}}</td>
 					<td>{{item.totalPrice}}</td>

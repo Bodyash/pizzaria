@@ -27,7 +27,7 @@ cartApp.controller('cartController', function($scope, $http){
 				 $http.put('/rest/cart/add/'+productId)
 				 .success(function(data) {
 					$scope.refreshCart( $http.get ('/rest/cart/'+$scope.cartId));
-					alert("Product Successfully added to the Cart!");
+					tempAlert("Product Successfully added to the Cart!", 2300);
 				});
 			 };
 			 
@@ -39,3 +39,14 @@ cartApp.controller('cartController', function($scope, $http){
 			};
 	
 	});
+
+function tempAlert(msg,duration)
+{
+ var el = document.createElement("div");
+ el.setAttribute("style","position:absolute;top:40%;left:40%;background-color:white;padding:20px;");
+ el.innerHTML = msg;
+ setTimeout(function(){
+  el.parentNode.removeChild(el);
+ },duration);
+ document.body.appendChild(el);
+}

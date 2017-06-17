@@ -17,9 +17,10 @@ public class HomeController {
 	ProductService productService;
 
 	@RequestMapping(value = "/")
-    public ModelAndView home() {
+    public ModelAndView home(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("pizzas", productService.findProductByCategory(Category.PIZZA));
+		mav.addObject("cartId", request.getSession().getId());
 		return mav;
     }
 	
@@ -32,9 +33,10 @@ public class HomeController {
     }
 	
 	@RequestMapping(value = "/desserts")
-    public ModelAndView desserts() {
+    public ModelAndView desserts(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("desserts");
 		mav.addObject("desserts", productService.findProductByCategory(Category.DESSERT));
+		mav.addObject("cartId", request.getSession().getId());
 		return mav;
     }
 	

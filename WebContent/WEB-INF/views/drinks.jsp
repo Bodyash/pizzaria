@@ -9,7 +9,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="/resources/js/controllers.js"></script>
 </head>
-<body ng-controller="cartController" ng-init="initCartId('${cartId}')">
+<body ng-controller="cartController" ng-init="initCartId('${cartId}')"> 
 <ul class="flex-container">
 	<c:forEach items="${drinks}" var="drink">
   		<li class="flex-item">
