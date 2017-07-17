@@ -32,6 +32,7 @@ import com.bodyash.pizzaria.service.AccountService;
 import com.bodyash.pizzaria.service.AccountServiceImpl;
 import com.bodyash.pizzaria.service.CartServiceImpl;
 import com.bodyash.pizzaria.service.CustomAccountDetailService;
+import com.bodyash.pizzaria.service.OrderServiceImpl;
 import com.bodyash.pizzaria.service.UserAccountRoleServiceImpl;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,9 +42,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {
 	
+	private InMemoryCartRepositoryImpl cartRepo;
+	
 	@Bean(name="CartRepository")
 	public CartRepository CartRepository(){
-		return new InMemoryCartRepositoryImpl();
+		if (cartRepo == null){
+			cartRepo = new InMemoryCartRepositoryImpl();
+			return cartRepo;
+		}else{
+			return cartRepo;
+		}
+		
 	}
 	
 	@Bean(name="CartService")
@@ -54,6 +63,11 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "accountDao")
 	public AccountDao AccountDao() {
 		return new AccountDaoImpl();
+	}
+	
+	@Bean(name = "orderService")
+	public OrderServiceImpl OrderService() {
+		return new OrderServiceImpl();
 	}
 	
 	@Bean(name = "orderDao")

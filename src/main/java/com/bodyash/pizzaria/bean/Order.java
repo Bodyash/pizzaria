@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +21,9 @@ public class Order {
     private State state;
     @Column(name = "order_details")
     private String orderDetails;
+    @Column(name = "cart_blob")
+    @Lob
+    private byte[] cart;
     
 	public int getId() {
 		return id;
@@ -50,5 +54,11 @@ public class Order {
 	}
 	public void setOrderDetails(String orderDetails) {
 		this.orderDetails = orderDetails;
+	}
+	public byte[] getCart() {
+		return cart;
+	}
+	public void setCart(byte[] cart) {
+		this.cart = cart;
 	}
 }

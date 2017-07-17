@@ -1,10 +1,11 @@
-package com.bodyash.pizzaria.dao;
+package com.bodyash.pizzaria.service;
 
 import java.util.List;
 
+import com.bodyash.pizzaria.bean.Cart;
 import com.bodyash.pizzaria.bean.Order;
 
-public interface OrderDao {
+public interface OrderService {
 	
 	public Order findById(int id);
 	public void deleteById(int id);

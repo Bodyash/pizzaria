@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bodyash.pizzaria.bean.Category;
 import com.bodyash.pizzaria.bean.Product;
+import com.bodyash.pizzaria.bean.State;
 import com.bodyash.pizzaria.bean.UserAccount;
 import com.bodyash.pizzaria.bean.UserAccountRole;
 import com.bodyash.pizzaria.service.AccountService;
@@ -75,8 +76,6 @@ public class AdminController {
     @RequestMapping(value = "/adminpanel/newproduct", method = RequestMethod.POST)
     public String saveProduct(@Valid Product prod,
             BindingResult result, ModelMap model) {
-    	
-    	System.out.println("Тест");
     	
         if (result.hasErrors()) {
             System.out.println("There are errors");
@@ -247,6 +246,11 @@ public class AdminController {
     @ModelAttribute("roles")
     public List<UserAccountRole> initializeProfiles() {
         return userAccountRoleService.findAll();
+    }
+    
+    @ModelAttribute("states")
+    public State[] initializeStates() {
+        return State.values();
     }
 
 }

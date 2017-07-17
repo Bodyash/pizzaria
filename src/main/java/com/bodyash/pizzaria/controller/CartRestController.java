@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.bodyash.pizzaria.bean.Cart;
 import com.bodyash.pizzaria.bean.CartItem;
+import com.bodyash.pizzaria.bean.Order;
 import com.bodyash.pizzaria.bean.Product;
 import com.bodyash.pizzaria.service.CartService;
+import com.bodyash.pizzaria.service.OrderService;
 import com.bodyash.pizzaria.service.ProductService;
 
 @Controller
@@ -32,6 +33,7 @@ public class CartRestController {
 	
 	@Autowired
 	private ProductService productService;
+	
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody Cart create(@RequestBody Cart cart){
@@ -64,8 +66,6 @@ public class CartRestController {
 	public void addItem(@PathVariable(value="productId") int productId, HttpServletRequest request){
 		String sessionId = request.getSession().getId();
 		Cart cart = cartService.read(sessionId);
-		System.out.println("REST Session ID" +sessionId);
-		System.out.println(cart);
 		
 		if(cart == null){
 			cartService.create(new Cart(sessionId));
@@ -100,6 +100,19 @@ public class CartRestController {
 		cart.removeCartItem(new CartItem(product));
 		cartService.update(sessionId, cart);
 	}
+	
+/*	@RequestMapping(value="/checkout", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.NO_CONTENT)
+	public void checkout(HttpServletRequest request){
+		String sessionId = request.getSession(true).getId();
+		Cart cart = cartService.read(sessionId);
+		if (cart != null){
+			Order order = new Order();
+			order = orderService.setOrderCart(cart, order);
+		}else{
+			//DONT FORGET TO DO SOMETHING WITH IT!
+		}
+	} */
 	
 	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST, reason="Illegal request, please verify your payload")

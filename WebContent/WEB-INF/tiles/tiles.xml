@@ -34,6 +34,11 @@
 		<put-attribute name="title" value="Cart" />
 		<put-attribute name="body" value="/WEB-INF/views/cart.jsp" />
 	</definition>
+	
+	<definition name="checkout" extends="base">
+		<put-attribute name="title" value="Checkout" />
+		<put-attribute name="body" value="/WEB-INF/views/checkout.jsp" />
+	</definition>
 
 	<definition name="account/login" extends="base">
 		<put-attribute name="title" value="Login" />

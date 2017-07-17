@@ -27,7 +27,7 @@
 			<div>
 				<a class="btn btn-danger pull-left" ng-click="clearCart()"> <span
 					class="glyphicon glyphicon-remove-sign"></span> Clear Cart
-				</a> <a href="#" class="btn btn-success pull-right"> <span
+				</a> <a href="/cart/checkout" class="btn btn-success pull-right"> <span
 					class="glyphicon-shopping-cart glyphicon"></span> Check out
 				</a>
 			</div>
@@ -58,7 +58,7 @@
 
 			</table>
 			<a href="<spring:url value="/" />" class="btn btn-success">
-					<span class="glyphicon-circle-arrow-left glyphicon"></span> continue shopping
+					<span class="glyphicon-circle-arrow-left glyphicon"></span> Continue shopping
 			</a>
 	</section>
 </body>
