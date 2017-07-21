@@ -1,5 +1,8 @@
 package com.bodyash.pizzaria.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
     public ModelAndView home(HttpServletRequest request) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yy HH:mm");
+		System.out.println("Someone connected: " + request.getRemoteAddr() + " at " + sdf.format(new Date()));
 		ModelAndView mav = new ModelAndView("home");
 		mav.addObject("pizzas", productService.findProductByCategory(Category.PIZZA));
 		mav.addObject("cartId", request.getSession().getId());

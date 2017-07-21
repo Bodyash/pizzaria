@@ -10,6 +10,7 @@ import com.bodyash.pizzaria.bean.UserAccountRole;
 
 public class UserAccountRoleDaoIml extends AbstractDao<Integer, UserAccountRole> implements UserAccountRoleDao{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserAccountRole> findAll() {
         Criteria crit = createEntityCriteria();

@@ -67,4 +67,9 @@ public class AccountServiceImpl implements AccountService {
         return ( user == null || ((id != null) && (user.getId() == id)));
     }
 
+	@Override
+	public List<UserAccount> findBySsoPartry(String ssoId) {
+		return dao.findBySsoPartru(ssoId);
+	}
+
 }

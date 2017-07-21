@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.bodyash.pizzaria.bean.Cart;
 import com.bodyash.pizzaria.bean.CartItem;
-import com.bodyash.pizzaria.bean.Order;
 import com.bodyash.pizzaria.bean.Product;
 import com.bodyash.pizzaria.service.CartService;
-import com.bodyash.pizzaria.service.OrderService;
 import com.bodyash.pizzaria.service.ProductService;
 
 @Controller

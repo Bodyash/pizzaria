@@ -2,6 +2,7 @@ package com.bodyash.pizzaria.bean;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class CartItem implements Serializable{
 	private Product product;
 	private int quantity;

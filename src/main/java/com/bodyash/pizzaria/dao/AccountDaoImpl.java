@@ -3,6 +3,7 @@ package com.bodyash.pizzaria.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -44,5 +45,14 @@ public class AccountDaoImpl extends AbstractDao<Integer, UserAccount> implements
 	@Override
 	public void updateUser(UserAccount user){
 		update(user);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserAccount> findBySsoPartru(String ssoId) {
+		@SuppressWarnings("deprecation")
+		Criteria crit = this.getSession().createCriteria(UserAccount.class);
+		crit.add(Restrictions.like("SSO_ID", ssoId, MatchMode.START));
+		return (List<UserAccount>) crit.list();
 	}
 }

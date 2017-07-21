@@ -2,7 +2,6 @@ package com.bodyash.pizzaria.service;
 
 import java.util.List;
 
-import com.bodyash.pizzaria.bean.Cart;
 import com.bodyash.pizzaria.bean.Order;
 
 public interface OrderService {

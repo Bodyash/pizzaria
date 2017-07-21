@@ -20,4 +20,6 @@ public interface ProductService {
 	
 	public void deleteProduct(int id);
 	
+	public List<Product> findProductByName(String keyword);
+	
 }

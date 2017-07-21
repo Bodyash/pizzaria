@@ -1,6 +1,5 @@
 package com.bodyash.pizzaria.controller;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -65,6 +64,12 @@ public class AdminController {
         return "account/productlist";
     }
     
+    @RequestMapping(value = "/adminpanel/productlist", method = RequestMethod.POST)
+    public String productListSearch(@RequestParam("productname") String productname, ModelMap model) {
+    	model.addAttribute("products", productService.findProductByName(productname));
+        return "account/productlist";
+    }
+    
     @RequestMapping(value = "/adminpanel/newproduct", method = RequestMethod.GET)
     public String newProduct(ModelMap model) {
         Product prod = new Product();
@@ -122,7 +127,7 @@ public class AdminController {
     
     @RequestMapping(value = "/adminpanel/userlist", method = RequestMethod.POST)
     public String searchUser(@RequestParam("ssoId") String ssoId, ModelMap model) {
-        model.addAttribute("userlist", Arrays.asList(accountService.findBySso(ssoId)));
+        model.addAttribute("userlist", accountService.findBySsoPartry(ssoId));
         return "account/userlist";
     }
     

@@ -16,4 +16,6 @@ public interface AccountDao {
     public List<UserAccount> findAllUsers();
     
     public void updateUser(UserAccount user);
+
+	public List<UserAccount> findBySsoPartru(String ssoId);
 }

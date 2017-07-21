@@ -19,5 +19,7 @@ public interface AccountService {
     public List<UserAccount> findAllUsers(); 
      
     public boolean isUserSSOUnique(Integer id, String sso);
+
+	public List<UserAccount> findBySsoPartry(String ssoId);
      
 }

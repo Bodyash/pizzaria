@@ -18,5 +18,7 @@ public interface ProductDao {
 	public void updateProduct(Product p);
 	
 	public void deleteProduct(Product p);
+	
+	public List<Product> findProductByName(String keyword);
 
 }

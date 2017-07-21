@@ -3,6 +3,7 @@ package com.bodyash.pizzaria.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -46,6 +47,15 @@ public class ProductDaoImpl extends AbstractDao<Integer, Product> implements Pro
 	public void deleteProduct(Product p) {
 		delete(p);
 		
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Product> findProductByName(String keyword) {
+		@SuppressWarnings("deprecation")
+		Criteria crit = this.getSession().createCriteria(Product.class);
+		crit.add(Restrictions.like("name", keyword, MatchMode.ANYWHERE));
+        return (List<Product>) crit.list();
 	}
 
 }
